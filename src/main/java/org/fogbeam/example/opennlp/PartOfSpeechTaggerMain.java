@@ -9,60 +9,47 @@ import java.io.InputStream;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class PartOfSpeechTaggerMain
-{
-	public static void main( String[] args )
-	{
-		InputStream modelIn = null;
-		try
-		{
-			// modelIn = new FileInputStream( "models/en-pos.model" );
-			modelIn = new FileInputStream( "models/en-pos-maxent.bin" );
-			
-			POSModel model = new POSModel( modelIn );
-			
-			
+/**
+ * @file PartOfSpeechTaggerMain.java
+ * @brief Realiza etiquetado gramatical (POS tagging) sobre un conjunto de tokens usando OpenNLP.
+ *
+ * @author Marcelo Daniel Choque
+ * @date 2024-11-19
+ */
+public class PartOfSpeechTaggerMain {
+
+	private static final Logger logger = Logger.getLogger(PartOfSpeechTaggerMain.class.getName());
+
+	public static void main(String[] args) {
+		// Uso de try-with-resources para manejar el InputStream
+		try (InputStream modelIn = new FileInputStream("models/en-pos-maxent.bin")) {
+
+			// Carga el modelo POS
+			POSModel model = new POSModel(modelIn);
 			POSTaggerME tagger = new POSTaggerME(model);
-			
-			String sent[] = new String[]{"Most", "large", "cities", "in", "the", "US", "had",
-                    "morning", "and", "afternoon", "newspapers", "."};		  
-			String tags[] = tagger.tag(sent);
-			
-			double probs[] = tagger.probs();
-			
-			
-			for( int i = 0; i < sent.length; i++ )
-			{
-				System.out.println( "Token [" + sent[i] + "] has POS [" + tags[i] + "] with probability = " + probs[i] );
-			}
-			
-			
-		}
-		catch( IOException e )
-		{
-			// Model loading failed, handle the error
-			e.printStackTrace();
-		}
-		finally
-		{
-			if( modelIn != null )
-			{
-				try
-				{
-					modelIn.close();
-				}
-				catch( IOException e )
-				{
-				}
-			}
-		}
 
-		
+			// Tokens de entrada
+			String[] sent = {
+					"Most", "large", "cities", "in", "the", "US", "had",
+					"morning", "and", "afternoon", "newspapers", "."
+			};
 
-		
-		
-		
-		System.out.println( "done" );
+			// Realizar el etiquetado POS
+			String[] tags = tagger.tag(sent);
+			double[] probs = tagger.probs();
+
+			// Registrar los resultados
+			for (int i = 0; i < sent.length; i++) {
+				logger.info("Token [" + sent[i] + "] tiene POS [" + tags[i] + "] con probabilidad = " + probs[i]);
+			}
+
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "Error al cargar el modelo o procesar los datos de entrada.", e);
+		} finally {
+			logger.info("Procesamiento completado.");
+		}
 	}
 }

@@ -10,77 +10,56 @@ import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.util.Span;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class NameFinderMain
-{
-	/**
-	 * @param args
-	 */
-	public static void main( String[] args ) throws Exception
-	{
-		InputStream modelIn = new FileInputStream( "models/en-ner-person.model" );
-		// InputStream modelIn = new FileInputStream( "models/en-ner-person.bin" );
-		
-		try
-		{
-			TokenNameFinderModel model = new TokenNameFinderModel( modelIn );
-		
+public class NameFinderMain {
+
+	private static final Logger LOGGER = Logger.getLogger(NameFinderMain.class.getName());
+
+	public static void main(String[] args) {
+
+		InputStream modelIn = null;
+
+		try {
+			modelIn = new FileInputStream("models/en-ner-person.model");
+
+			TokenNameFinderModel model = new TokenNameFinderModel(modelIn);
+
 			NameFinderME nameFinder = new NameFinderME(model);
-			
-			String[] tokens = { //"A", "guy", "named",
-								// "Mr.", 
-								"Phillip", 
-								"Rhodes",
-								"is",
-								"presenting",
-								"at",
-								"some",
-								"meeting",
-								"."};
-			
-			Span[] names = nameFinder.find( tokens );
-		
-			for( Span ns : names )
-			{
-				System.out.println( "ns: " + ns.toString() );
-			
-				// if you want to actually do something with the name
-				// ...
-				
+
+			String[] tokens = {
+					"Phillip",
+					"Rhodes",
+					"is",
+					"presenting",
+					"at",
+					"some",
+					"meeting",
+					"."
+			};
+
+			Span[] names = nameFinder.find(tokens);
+
+			for (Span ns : names) {
+				System.out.println("ns: " + ns.toString());
+				// Aquí puedes hacer algo con el nombre encontrado
 			}
-		
+
 			nameFinder.clearAdaptiveData();
-			
-		}
-		catch( IOException e )
-		{
-			e.printStackTrace();
-		}
-		finally
-		{
-			if( modelIn != null )
-			{
-				try
-				{
+
+		} catch (IOException e) {
+			LOGGER.log(Level.SEVERE, "Error processing the Name Finder model or input tokens.", e);
+		} finally {
+			if (modelIn != null) {
+				try {
 					modelIn.close();
-				}
-				catch( IOException e )
-				{
+				} catch (IOException e) {
+					LOGGER.log(Level.WARNING, "Error closing the model input stream.", e);
 				}
 			}
 		}
-		
-		
-		System.out.println( "done" );
+
+		System.out.println("done");
 	}
 }
-
-/* 				
-				StringBuilder sb = new StringBuilder();
-				for( int i = ns.getStart(); i < ns.getEnd(); i++ )
-				{
-					sb.append( tokens[i] + " " );
-				}
-				
-				System.out.println( "The name is: " + sb.toString() );
- */

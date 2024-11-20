@@ -1,0 +1,5 @@
+My name is Marcelo Daniel Choque Mamani.
+
+OpenNLP is a powerful library for natural language processing. It supports tasks like tokenization, sentence segmentation, and named entity recognition.
+
+Actions speak louder than words. It’s easy to promise, but harder to follow through with action
