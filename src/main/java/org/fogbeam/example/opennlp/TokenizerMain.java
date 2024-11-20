@@ -46,17 +46,21 @@ public class TokenizerMain {
 	 */
 	private static List<String> gatherInputText(String directory) throws IOException {
 		List<String> fileContents = new ArrayList<>();
-		Files.list(Paths.get(directory))
-				.filter(Files::isRegularFile)
-				.filter(path -> path.toString().endsWith(".txt"))
-				.forEach(filePath -> {
-					try {
-						String content = Files.readString(filePath);
-						fileContents.add(content);
-					} catch (IOException e) {
-						System.err.println("Error al leer el archivo: " + filePath.getFileName());
-					}
-				});
+
+		// Usar try-with-resources para cerrar automáticamente el stream
+		try (var stream = Files.list(Paths.get(directory))) {
+			stream.filter(Files::isRegularFile)
+					.filter(path -> path.toString().endsWith(".txt"))
+					.forEach(filePath -> {
+						try {
+							String content = Files.readString(filePath);
+							fileContents.add(content);
+						} catch (IOException e) {
+							System.err.println("Error al leer el archivo: " + filePath.getFileName());
+						}
+					});
+		}
+
 		return fileContents;
 	}
 
