@@ -30,7 +30,65 @@
                     <target>17</target> <!-- Cambia a 11 si usas Java 11 -->
                 </configuration>
             </plugin>
+
+
         </plugins>
     </build>
+
+
+    <reporting>
+        <plugins>
+    <!-- Plugin OWASP Dependency Check para reportes de seguridad en dependencias -->
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>8.4.2</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+
+            <!-- Checkstyle -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.5.0</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <!-- PMD -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.25.0</version>
+            </plugin>
+
+
+
+
+        </plugins>
+
+
+
+
+
+
+
+
+
+
+
+    </reporting>
 
 </project>
