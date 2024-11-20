@@ -29,7 +29,7 @@ public class NameFinderMain {
 	private static final Logger LOGGER = Logger.getLogger(NameFinderMain.class.getName());
 
 	/**
-	 * @brief Método principal que ejecuta la detección de nombres propios.
+	 * @brief Metodo principal que ejecuta la detección de nombres propios.
 	 *
 	 * Carga un modelo preentrenado para la detección de nombres, procesa un conjunto de tokens
 	 * y muestra los nombres encontrados en la salida estándar.

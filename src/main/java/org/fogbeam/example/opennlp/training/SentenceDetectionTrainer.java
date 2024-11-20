@@ -24,7 +24,7 @@ public class SentenceDetectionTrainer {
 	/**
 	 * @brief Ejecuta el entrenamiento del modelo de detección de oraciones.
 	 *
-	 * Este método carga datos de entrenamiento, entrena un modelo y lo guarda en un archivo.
+	 * Este metodo carga datos de entrenamiento, entrena un modelo y lo guarda en un archivo.
 	 *
 	 * @param args Argumentos de la línea de comandos (no usados).
 	 * @throws Exception Si ocurre un error durante el entrenamiento o manejo de archivos.

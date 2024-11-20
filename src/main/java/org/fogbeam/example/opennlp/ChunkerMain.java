@@ -21,7 +21,7 @@ public class ChunkerMain {
 	private static final Logger logger = Logger.getLogger(ChunkerMain.class.getName());
 
 	/**
-	 * Método principal que ejecuta el chunking sobre tokens y etiquetas POS.
+	 * Metodo principal que ejecuta el chunking sobre tokens y etiquetas POS.
 	 *
 	 * @param args Argumentos de línea de comandos (no utilizados).
 	 */
