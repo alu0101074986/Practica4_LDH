@@ -1,7 +1,6 @@
 
 package org.fogbeam.example.opennlp.training;
 
-
 import java.io.*;
 
 import opennlp.tools.postag.POSModel;
@@ -15,12 +14,6 @@ import opennlp.tools.util.TrainingParameters;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Entrena un modelo de etiquetado gramatical (POS) con datos de entrenamiento.
- * Este modelo puede ser utilizado para etiquetar texto con etiquetas gramaticales.
- */
-
-
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -29,9 +22,27 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * @class PartOfSpeechTaggerTrainer
+ * @brief Entrena un modelo de etiquetado gramatical (POS) con datos de entrenamiento.
+ *
+ * Esta clase utiliza OpenNLP para entrenar un modelo de etiquetado gramatical (Part-of-Speech Tagging)
+ * basado en datos de entrenamiento en formato especificado. Una vez entrenado, el modelo se guarda
+ * para su uso futuro.
+ */
+
 public class PartOfSpeechTaggerTrainer {
 
 	private static final Logger logger = Logger.getLogger(PartOfSpeechTaggerTrainer.class.getName());
+
+	/**
+	 * @brief Punto de entrada del programa para entrenar un modelo POS.
+	 *
+	 * Este método carga datos de entrenamiento, entrena un modelo de etiquetado gramatical
+	 * y guarda el modelo en un archivo.
+	 *
+	 * @param args Argumentos de línea de comandos (no utilizados).
+	 */
 
 	public static void main(String[] args) {
 		POSModel model = null;

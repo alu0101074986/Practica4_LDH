@@ -20,7 +20,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Clase para entrenar un modelo de clasificación de documentos (Document Categorization).
+ * @class DocumentClassifierTrainer
+ * @brief Clase para entrenar un modelo de clasificación de documentos (Document Categorization).
+ *
+ * Esta clase utiliza OpenNLP para entrenar un modelo de clasificación de documentos basado en
+ * datos de entrenamiento en formato especificado. Una vez entrenado, el modelo se guarda
+ * en un archivo para uso posterior.
  */
 public class DocumentClassifierTrainer {
 

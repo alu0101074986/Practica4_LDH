@@ -38,7 +38,7 @@ public class TokenizerMain {
 	}
 
 	/**
-	 * Método para recopilar el contenido de todos los archivos de texto en el directorio especificado.
+	 * Metodo para recopilar el contenido de todos los archivos de texto en el directorio especificado.
 	 *
 	 * @param directory Ruta del directorio de entrada.
 	 * @return Lista de cadenas con el contenido de los archivos.
@@ -65,7 +65,7 @@ public class TokenizerMain {
 	}
 
 	/**
-	 * Método para procesar el contenido de los archivos y generar tokens utilizando el modelo.
+	 * Metodo para procesar el contenido de los archivos y generar tokens utilizando el modelo.
 	 *
 	 * @param textData Lista de cadenas con el contenido de los archivos.
 	 * @param modelPath Ruta al archivo del modelo de tokenización.
@@ -87,7 +87,7 @@ public class TokenizerMain {
 	}
 
 	/**
-	 * Método para guardar los tokens en un archivo de salida.
+	 * Metodo para guardar los tokens en un archivo de salida.
 	 *
 	 * @param tokens Lista de tokens a guardar.
 	 * @param outputFile Ruta del archivo de salida.
